@@ -1,5 +1,8 @@
 (function () {
-  const API_URL = "http://localhost:5000/api/events";
+  const BACKENDS = [
+    "http://localhost:3000/api/events",
+    "https://analytics-app-8sov.onrender.com/api/events"
+  ];
   const STORAGE_KEY = "analytics_session_id";
 
   let sessionId = localStorage.getItem(STORAGE_KEY);
@@ -9,18 +12,20 @@
   }
 
   function sendEvent(event) {
-    fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(event),
-    }).catch(() => {});
+    BACKENDS.forEach((url) => {
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(event)
+      }).catch(() => {});
+    });
   }
 
   sendEvent({
     sessionId,
     type: "page_view",
     url: location.href,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 
   document.addEventListener("click", (e) => {
@@ -33,7 +38,7 @@
       url: location.href,
       timestamp: new Date().toISOString(),
       x,
-      y,
+      y
     });
-});
+  });
 })();
