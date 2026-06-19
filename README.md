@@ -53,7 +53,6 @@ npm run dev   # runs on http://localhost:5173
 ---
 
 ## 🤔 Assumptions & Trade‑offs
-- **Iframe embedding** – Some sites block being loaded in an iframe (X‑Frame‑Options/CSP). The component shows a fallback message with a link to open the site in a new tab.
 - **CORS whitelist** – Only the two known origins are allowed. Add more origins to `backend/src/index.ts` if needed.
 - **Click coordinates** – Stored as percentages so they work regardless of the page size.
 - **No external UI libraries** – Styling is pure CSS to keep the bundle lightweight and fully customizable.
