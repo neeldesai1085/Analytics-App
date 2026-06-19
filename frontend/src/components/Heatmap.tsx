@@ -7,7 +7,6 @@ interface Props {
   url: string;
 }
 
-// Minimal heatmap container – subtle border, light background
 export default function Heatmap({ url }: Props) {
   const [clicks, setClicks] = useState<Click[]>([]);
 
