@@ -1,0 +1,3 @@
+https://analytics-app-fpa5.vercel.app/analytics.js
+
+This is the analytics.js file which should be included in the website where we want to track the analytics as a script.
